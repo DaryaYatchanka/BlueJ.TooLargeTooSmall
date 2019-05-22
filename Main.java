@@ -1,33 +1,61 @@
-
+import java.util.Scanner;
+import java.util.Random;
 /**
  * Write a description of class Main here.
  *
- * @author (your name)
+ * @author (Darya Yatchanka)
  * @version (a version number or a date)
  */
 public class Main
 {
     // instance variables - replace the example below with your own
-    private int x;
+    
+    private int count = 0;
+    private int previousNum = 0;
+    
+    
+    
 
     /**
      * Constructor for objects of class Main
      */
     public Main()
     {
-        // initialise instance variables
-        x = 0;
-    }
+     
+     Random rand = new Random();
+     int n = rand.nextInt(10);
+     n+=1;
+     
+     Scanner sc = new Scanner(System.in);
+     int i = 0;
+     do {
+      
+      i = sc.nextInt();
 
-    /**
-     * An example of a method - replace this comment with your own
-     *
-     * @param  y  a sample parameter for a method
-     * @return    the sum of x and y
-     */
-    public int sampleMethod(int y)
-    {
-        // put your code here
-        return x + y;
+       //System.out.println(i);
+       if(i<n){
+           System.out.println("too small");
+           if (previousNum!=i){
+           count += 1;
+           }
+        }
+        else if(i>n){
+            System.out.println("too big");
+            if (previousNum!=i){
+            count +=1;
+            }
+        }
+        else {
+            System.out.println("correct guess");
+            
+            count +=1;
+            
+        }
+       
+       previousNum = i;
+    }while (i!=n);
+     System.out.println("it took you "+count+" guesses!");
+   
     }
 }
+   
